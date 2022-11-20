@@ -18,6 +18,7 @@ public abstract class Transport {
     // Метод закончить движение
     public abstract void stopMovement();
     public abstract void printType();
+    public abstract boolean service();
 
     public String getBrand() {
         return brand;

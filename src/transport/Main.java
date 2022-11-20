@@ -17,7 +17,7 @@ public class Main {
         Car bmwZ8 = new Car("BMW", "Z8", 3.0f, BodyType.SEDAN);
         Car kiaSportage4 = new Car("Kia", "Sportage 4", 2.4f, BodyType.CROSSOVER);
 
-        DriverB driverBladaGrande = new DriverB("Иванов", 1, ladaGrande);
+        DriverB driverBladaGrande = new DriverB("Иванов",1, ladaGrande);
         DriverB driverBaudiA8 = new DriverB("Петров", 2, audiA8);
         DriverB driverBbmwZ8 = new DriverB("Семенов", 2, bmwZ8);
         DriverB driverBkiaSportage4 = new DriverB("Сидоров", 3, kiaSportage4);
@@ -32,24 +32,28 @@ public class Main {
         ladaGrande.getBestLapTime();
         ladaGrande.getMaxSpeed();
         ladaGrande.printType();
+        service(ladaGrande);
         System.out.println("-------------------");
 
         audiA8.pitStop();
         audiA8.getBestLapTime();
         audiA8.getMaxSpeed();
         audiA8.printType();
+        service(audiA8);
         System.out.println("-------------------");
 
         bmwZ8.pitStop();
         bmwZ8.getBestLapTime();
         bmwZ8.getMaxSpeed();
         bmwZ8.printType();
+        service(bmwZ8);
         System.out.println("-------------------");
 
         kiaSportage4.pitStop();
         kiaSportage4.getBestLapTime();
         kiaSportage4.getMaxSpeed();
         kiaSportage4.printType();
+        service(kiaSportage4);
 
         // Грузовые автомобили
         System.out.println("-------------------");
@@ -76,24 +80,28 @@ public class Main {
         maz.getBestLapTime();
         maz.getMaxSpeed();
         maz.printType();
+        service(maz);
         System.out.println("-------------------");
 
         kamaz.pitStop();
         kamaz.getBestLapTime();
         kamaz.getMaxSpeed();
         kamaz.printType();
+        service(kamaz);
         System.out.println("-------------------");
 
         volvo.pitStop();
         volvo.getBestLapTime();
         volvo.getMaxSpeed();
         volvo.printType();
+        service(volvo);
         System.out.println("-------------------");
 
         man.pitStop();
         man.getBestLapTime();
         man.getMaxSpeed();
         man.printType();
+        service(man);
 
         // Автобусы
         System.out.println("-------------------");
@@ -120,25 +128,50 @@ public class Main {
         paz.getBestLapTime();
         paz.getMaxSpeed();
         paz.printType();
+        service(paz);
         System.out.println("-------------------");
 
         gazel.pitStop();
         gazel.getBestLapTime();
         gazel.getMaxSpeed();
         gazel.printType();
+        service(gazel);
         System.out.println("-------------------");
 
         ford.pitStop();
         ford.getBestLapTime();
         ford.getMaxSpeed();
         ford.printType();
+        service(ford);
         System.out.println("-------------------");
 
         jac.pitStop();
         jac.getBestLapTime();
         jac.getMaxSpeed();
         jac.printType();
+        service(jac);
 
+//        service(ladaGrande, audiA8, bmwZ8, kiaSportage4,
+//                maz, kamaz, volvo, man,
+//                gazel, paz,ford, jac
+//        );
+
+    }
+
+    private static void service(Transport... transports) {
+        for (Transport transport : transports) {
+                serviceTransport(transport);
+        }
+    }
+
+    private static void serviceTransport(Transport transport) {
+        try {
+            if (!transport.service()) {
+                throw new RuntimeException("Автомобиль " + transport.getBrand() + " " + transport.getModel() + " не прошел диагностику!");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

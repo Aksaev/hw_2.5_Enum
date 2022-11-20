@@ -57,6 +57,11 @@ public class Car extends Transport implements Competing {
         }
     }
 
+    @Override
+    public boolean service() {
+        return Math.random() > 0.7;
+    }
+
     public BodyType getBodyType() {
         return bodyType;
     }
